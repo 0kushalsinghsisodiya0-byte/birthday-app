@@ -1,0 +1,259 @@
+/* src/index.css - Updated with SVG balloon styles + improved mobile layout */
+
+/* Reset & base */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body, #root { height: 100%; font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; background: #fbfbfd; }
+
+/* Page wrapper */
+.app-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.6rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Gradient backgrounds (reusable) */
+.bg-gradient-1 {
+  background: linear-gradient(135deg, #fff8e1, #f7e6b5, #f5d77b);
+  background-attachment: fixed;
+}
+.bg-gradient-2 {
+  background: linear-gradient(135deg, #fff8e1, #f7e6b5, #f5d77b);
+  background-attachment: fixed;
+}
+.bg-golden-gradient {
+  background: linear-gradient(135deg, #fff8e1, #f7e6b5, #f5d77b);
+  background-attachment: fixed;
+}
+
+/* Card - blush pink for all pages except LetterPage */
+.card {
+  background-color: #ffe6e6; /* blush pink */
+  backdrop-filter: blur(6px); /* subtle glass effect */
+  border-radius: 14px;
+  padding: 1.6rem;
+  box-shadow: 0 12px 30px rgba(12, 12, 20, 0.12);
+  max-width: 980px;
+  width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  text-align: center;
+}
+
+/* Titles and text */
+.title { font-size: 1.5rem; margin-bottom: 0.6rem; color: #222; }
+.small { font-size: 0.95rem; color: #555; margin-top: 0.5rem; }
+
+/* Buttons */
+.btn {
+  background: linear-gradient(90deg,#ff7a7a,#ffb199);
+  color: white;
+  border: none;
+  padding: 11px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 700;
+  margin: 0.5rem;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.12);
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+.btn:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(0,0,0,0.14); }
+.btn.secondary { background: linear-gradient(90deg,#66d4ff,#9be7ff); color: #062630; }
+
+/* Controls wrapper */
+.controls {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.6rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* SVG balloon container class and animations
+   The <svg> element itself is absolutely positioned by the component.
+   These styles animate vertical float and subtle sway using CSS variables.
+*/
+.svg-balloon {
+  transform-origin: center bottom;
+  animation:
+    floatUp var(--float-duration, 18s) linear var(--float-delay, 0s) infinite,
+    sway 3.4s ease-in-out calc(var(--float-delay, 0s) + 0.2s) infinite;
+  will-change: transform, opacity;
+  opacity: 0.98;
+  z-index: 4;
+  pointer-events: none;
+}
+
+/* Floating keyframes */
+@keyframes floatUp {
+  0% { transform: translateY(38vh) scale(1); opacity: 1; }
+  100% { transform: translateY(-130vh) scale(1.03); opacity: 0.8; }
+}
+@keyframes sway {
+  0% { transform: translateY(0px) rotate(-2deg); }
+  50% { transform: translateY(-6px) rotate(2deg); }
+  100% { transform: translateY(0px) rotate(-2deg); }
+}
+
+/* Confetti canvas placeholder (react-confetti renders its own canvas overlay) */
+.confetti-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
+
+/* Video wrapper */
+.video-wrap { width: 100%; max-width: 940px; border-radius: 12px; overflow: hidden; box-shadow: 0 12px 40px rgba(0,0,0,0.16); }
+video { width: 100%; height: auto; display: block; background: #000; }
+
+/* Slideshow positions (desktop) */
+.slideshow-stage {
+  position: relative;
+  width: 100%;
+  max-width: 1100px;
+  height: 640px;
+  margin: auto;
+  overflow: hidden;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.04);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.02);
+}
+.slide-img {
+  position: absolute;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.22);
+  transition: transform .6s ease, opacity .4s ease;
+}
+.pos-upper-right { right: 28px; top: 28px; width: 270px; height: 170px; }
+.pos-lower-right { right: 28px; bottom: 28px; width: 220px; height: 160px; }
+.pos-center { left: 50%; top: 50%; transform: translate(-50%,-50%); width: 400px; height: 300px; }
+.pos-upper-left { left: 28px; top: 28px; width: 240px; height: 160px; }
+.pos-lower-left { left: 28px; bottom: 28px; width: 200px; height: 150px; }
+
+/* Paper-like letter */
+.paper {
+  background: linear-gradient(180deg,#fffefc,#fff7ef);
+  width: min(900px, 92%);
+  border-radius: 14px;
+  padding: 1.6rem 1.6rem;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.14);
+  max-height: 70vh;
+  overflow-y: auto;
+  line-height: 1.55;
+  color: #2b2b2b;
+  border: 1px solid rgba(0,0,0,0.04);
+}
+
+/* Input field */
+.input {
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  width: 100%;
+  max-width: 420px;
+  margin: 0.6rem auto;
+  display: block;
+  font-size: 1rem;
+}
+
+/* Error */
+.error { color: #d9534f; margin-top: 0.5rem; font-weight: 700; }
+
+/* --- Responsive improvements --- */
+@media (max-width: 980px) {
+  .card { padding: 1.2rem; }
+  .title { font-size: 1.35rem; }
+  .slideshow-stage { height: 520px; }
+  .pos-center { width: 420px; height: 300px; }
+  .pos-upper-right, .pos-upper-left { width: 180px; height: 120px; }
+  .pos-lower-right, .pos-lower-left { width: 160px; height: 120px; }
+  .svg-balloon { opacity: 0.96; }
+}
+
+@media (max-width: 700px) {
+  /* On small screens make the center image dominate and hide or shrink side images */
+  .slideshow-stage {
+    height: 420px;
+    border-radius: 12px;
+  }
+  .pos-center {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    width: 92%;
+    height: 86%;
+    border-radius: 10px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.22);
+  }
+  .pos-upper-right, .pos-upper-left, .pos-lower-right, .pos-lower-left {
+    opacity: 0;
+    transform: scale(0.85);
+    pointer-events: none;
+  }
+
+  /* tighten spacing */
+  .app-page { padding: 1rem; }
+  .card { padding: 1rem; border-radius: 12px; }
+  .title { font-size: 1.12rem; }
+  .btn { padding: 9px 14px; font-size: 0.96rem; }
+  .svg-balloon { display: block; filter: drop-shadow(0 6px 18px rgba(0,0,0,0.12)); }
+}
+
+/* Extra small devices */
+@media (max-width: 420px) {
+  .pos-center { height: 74%; }
+  .title { font-size: 1.02rem; }
+  .small { font-size: 0.88rem; }
+  .btn { padding: 8px 12px; font-size: 0.92rem; }
+}
+
+/* Decorative SVG accents */
+.decorations-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1; /* balloons and confetti go above this */
+  opacity: 0.9;
+}
+
+/* Animated gold gradient background */
+.bg-gold {
+  background: linear-gradient(135deg, #fdf6e3, #f5deb3, #f4c430);
+  background-size: 400% 400%;
+  animation: gradientShift 12s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.birthday-banner-img {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 20%;
+  z-index: 10;
+}
+
+.decoration-rope-left {
+  position: absolute;
+  top: 0;                 /* at the top */
+  left: 0;                /* stick to left edge */
+  width: 30%;             /* adjust as needed */
+  z-index: 6;             /* above background but behind card */
+  pointer-events: none;
+}
+
+.decoration-rope-right {
+  position: absolute;
+  top: 0;                 /* at the top */
+  right: 0;               /* stick to right edge */
+  width: 20%;             /* adjust as needed */
+  z-index: 6;
+  pointer-events: none;
+}
