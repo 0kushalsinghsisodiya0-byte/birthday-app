@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/birthday-app/static/css/main.1f39f2d0.css",
+    "main.js": "/birthday-app/static/js/main.1fe33970.js",
+    "static/media/video.mp4": "/birthday-app/static/media/video.8e291e0fa255396ddc5f.mp4",
+    "static/media/music.mp3": "/birthday-app/static/media/music.cc238e7d460b540a5be3.mp3",
+    "static/media/banner.png": "/birthday-app/static/media/banner.30fb55de0c0a547d62e5.png",
+    "static/media/rope-right.png": "/birthday-app/static/media/rope-right.68dc4734f94e9251d19d.png",
+    "static/media/image5.jpg": "/birthday-app/static/media/image5.cdfaa144734f32ebdf7c.jpg",
+    "static/media/image4.jpg": "/birthday-app/static/media/image4.2f82b93ce9dd3ec2359f.jpg",
+    "static/media/image3.jpg": "/birthday-app/static/media/image3.5f3008110d82ecec4103.jpg",
+    "static/media/image2.jpg": "/birthday-app/static/media/image2.aea3d2f731bbded75bb0.jpg",
+    "static/media/image1.jpg": "/birthday-app/static/media/image1.d3772b3798159cca9544.jpg",
+    "static/media/rope-left.png": "/birthday-app/static/media/rope-left.cf86e13f1dc91c24db7b.png",
+    "index.html": "/birthday-app/index.html",
+    "main.1f39f2d0.css.map": "/birthday-app/static/css/main.1f39f2d0.css.map",
+    "main.1fe33970.js.map": "/birthday-app/static/js/main.1fe33970.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1f39f2d0.css",
+    "static/js/main.1fe33970.js"
+  ]
+}
